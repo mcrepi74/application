@@ -1,0 +1,21 @@
+# Configuration du projet Titanic
+
+data:
+  train_path: "train.csv"
+  test_path: "test.csv"
+  full_data_path: "data.csv"
+
+preprocessing:
+  imputation_strategy: "median"
+  categorical_imputation: "most_frequent"
+  scale_features: true
+
+model:
+  type: "RandomForest"
+  n_trees: 100
+  test_size: 0.1
+  random_state: 42
+
+output:
+  results_dir: "results/"
+  model_path: "models/titanic_model.pkl"
