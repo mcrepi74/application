@@ -1,15 +1,20 @@
 import pandas as pd ; import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 import multiprocessing
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.model_selection import train_test_split
-import pathlib
+from pathlib import Path
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import RandomForestClassifier
 import time
 import os
 
-os.chdir('/home/coder/work/ensae-reproductibilite-application')
+# Définir le chemin du répertoire
+project_path = Path('/home/onyxia/work/application')
+
+# Changer de répertoire
+os.chdir(project_path)
 TrainingData = pd.read_csv('data.csv')
 
 TrainingData.head()
