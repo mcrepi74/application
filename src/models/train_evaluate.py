@@ -3,9 +3,17 @@ from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
 from src.pipeline.build_features import preprocess_data
+import os
 import yaml
 
-config = yaml.safe_load(open("configuration/config.yaml"))
+# Récupérer le chemin absolu du dossier contenant ce script
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+CONFIG_PATH = os.path.join(BASE_DIR, "configuration", "config.yaml")
+
+# Charger le fichier de configuration
+with open(CONFIG_PATH, "r") as file:
+    config = yaml.safe_load(file)
+
 
 def train_model(X_train, y_train, n_trees):
     """Entraîne un modèle RandomForest."""
