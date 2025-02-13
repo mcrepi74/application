@@ -42,8 +42,6 @@ def main():
     parser.add_argument("--n_trees", type=int, default=config["model"]["n_trees"], help="Nombre d'arbres pour RandomForest")
     args = parser.parse_args()
 
-    project_path = Path("/home/onyxia/work/application/data/raw")
-    os.chdir(project_path)
     df = load_data(config["data"]["full_data_path"])
     explore_data(df)
 

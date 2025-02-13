@@ -1,9 +1,9 @@
 # Configuration du projet Titanic
 
 data:
-  train_path: "train.csv"
-  test_path: "test.csv"
-  full_data_path: "data.csv"
+  train_path: "https://minio.lab.sspcloud.fr/maxime74/ensae-reproductibilite/data/raw/train.csv"
+  test_path: "https://minio.lab.sspcloud.fr/maxime74/ensae-reproductibilite/data/raw/test.csv"
+  full_data_path: "https://minio.lab.sspcloud.fr/maxime74/ensae-reproductibilite/data/raw/data.csv"
 
 preprocessing:
   imputation_strategy: "median"
