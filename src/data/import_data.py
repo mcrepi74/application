@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import yaml
+from loguru import logger
 
 # Récupérer le chemin absolu du dossier contenant ce script
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -17,5 +18,9 @@ def load_data(file_path):
 
 def explore_data(df):
     """Affiche un aperçu des données et les valeurs manquantes."""
-    print(df.head())
-    print(df.isnull().sum())
+    logger.info("Aperçu des premières lignes du dataset")
+    logger.info(df.head().to_string())
+    logger.info("Nombre de valeurs manquantes par colonne")
+    logger.info(df.isnull().sum().to_string())
+
+

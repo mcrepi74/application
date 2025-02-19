@@ -1,13 +1,15 @@
 import argparse
 import matplotlib.pyplot as plt
 import seaborn as sns
-from pathlib import Path
 from dotenv import load_dotenv
 from sklearn.model_selection import train_test_split
 from src.data.import_data import load_data, explore_data
 from src.models.train_evaluate import train_model, evaluate_model
 import os
 import yaml
+from loguru import logger
+# Ajouter un fichier de log avec rotation automatique
+logger.add("logs/app.log", rotation="10 MB", level="INFO")
 
 # Déterminer le chemin absolu du répertoire racine de l'application
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Change ici
@@ -32,15 +34,16 @@ load_dotenv()
 jeton_api = os.environ.get("JETON_API", "")
 
 if jeton_api.startswith("$"):
-    print("API token has been configured properly")
+    logger.success("API token has been configured properly")
 else:
-    print("API token has not been configured")
+    logger.warning("API token has not been configured")
 
 def main():
     """Exécute le pipeline d'analyse et de modélisation."""
     parser = argparse.ArgumentParser(description="Paramétrisation du nombre d'arbres pour RandomForest.")
     parser.add_argument("--n_trees", type=int, default=config["model"]["n_trees"], help="Nombre d'arbres pour RandomForest")
     args = parser.parse_args()
+    logger.info(f"Nombre d'arbres utilisé: {args.n_trees}")
 
     df = load_data(config["data"]["full_data_path"])
     explore_data(df)
@@ -64,5 +67,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#on fait un essai merge
