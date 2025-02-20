@@ -3,5 +3,6 @@
 __pycache__/
 data/raw/*.csv
 data/derived/*.csv
-
 logs/
+titanic/
+convert_requirement.py/

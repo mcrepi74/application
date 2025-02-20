@@ -2,7 +2,7 @@
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix
-from src.pipeline.build_features import preprocess_data
+from titanicml.features.build_features import preprocess_data
 import os
 import yaml
 from loguru import logger

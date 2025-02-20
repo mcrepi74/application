@@ -3,24 +3,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from dotenv import load_dotenv
 from sklearn.model_selection import train_test_split
-from src.data.import_data import load_data, explore_data
-from src.models.train_evaluate import train_model, evaluate_model
+from titanicml.data.import_data import load_data, explore_data
+from titanicml.models.train_evaluate import train_model, evaluate_model
 import os
 import yaml
 from loguru import logger
 # Ajouter un fichier de log avec rotation automatique
 logger.add("logs/app.log", rotation="10 MB", level="INFO")
-
 # Déterminer le chemin absolu du répertoire racine de l'application
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Change ici
-CONFIG_PATH = os.path.join(BASE_DIR, "configuration", "config.yaml")
-
-# Charger la configuration
-def load_config():
-    with open(CONFIG_PATH, "r") as file:
-        return yaml.safe_load(file)
-
-config = load_config()
+CONFIG_PATH = os.path.join(os.path.dirname(__file__), '..', 'configuration', 'config.yaml')
 
 # Charger la configuration
 def load_config():
