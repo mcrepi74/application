@@ -3,16 +3,37 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from dotenv import load_dotenv
 from sklearn.model_selection import train_test_split
-from titanicml.data.import_data import load_data, explore_data
-from titanicml.models.train_evaluate import train_model, evaluate_model
 import os
+import sys
 import yaml
 from loguru import logger
+import warnings
+import pandas as pd
+from pandas.core.common import SettingWithCopyWarning
+
+# Filter warnings
+warnings.filterwarnings('ignore', category=FutureWarning)
+warnings.filterwarnings('ignore', category=SettingWithCopyWarning)
+pd.options.mode.chained_assignment = None
+
+# Ajouter le répertoire parent au sys.path pour trouver le module titanicml
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from titanicml.data.import_data import load_data, explore_data
+from titanicml.models.train_evaluate import train_model, evaluate_model
+
 # Ajouter un fichier de log avec rotation automatique
 logger.add("logs/app.log", rotation="10 MB", level="INFO")
-# Déterminer le chemin absolu du répertoire racine de l'application
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Change ici
-CONFIG_PATH = os.path.join(os.path.dirname(__file__), '..', 'configuration', 'config.yaml')
+
+# Remplacer le code existant de configuration du chemin par:
+CONFIG_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'configuration', 'config.yaml')
+if not os.path.exists(CONFIG_PATH):
+    # Fallback path pour Docker
+    CONFIG_PATH = os.path.join('/titanic', 'configuration', 'config.yaml')
+    if not os.path.exists(CONFIG_PATH):
+        raise FileNotFoundError(f"Le fichier config.yaml n'a pas été trouvé ni dans {CONFIG_PATH}")
+
+logger.info(f"Utilisation du fichier de configuration: {CONFIG_PATH}")
 
 # Charger la configuration
 def load_config():
