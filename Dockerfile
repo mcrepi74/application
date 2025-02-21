@@ -19,4 +19,5 @@ COPY docs/main.py ./
 RUN pip install --no-cache-dir -r requirements_clean.txt
 
 # Étape 5 : Définir la commande à exécuter
-CMD ["python3", "main.py"]
+ENTRYPOINT ["python3", "main.py"]
+CMD []

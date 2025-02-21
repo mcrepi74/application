@@ -7,14 +7,6 @@ import os
 import sys
 import yaml
 from loguru import logger
-import warnings
-import pandas as pd
-from pandas.core.common import SettingWithCopyWarning
-
-# Filter warnings
-warnings.filterwarnings('ignore', category=FutureWarning)
-warnings.filterwarnings('ignore', category=SettingWithCopyWarning)
-pd.options.mode.chained_assignment = None
 
 # Ajouter le répertoire parent au sys.path pour trouver le module titanicml
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
