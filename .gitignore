@@ -1,8 +1,7 @@
 # .gitignore
+venv/
+__pycache__/
 .env
 __pycache__/
-data/raw/*.csv
-data/derived/*.csv
 logs/
-titanic/
-convert_requirement.py/
+

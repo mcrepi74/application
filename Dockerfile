@@ -1,4 +1,4 @@
-# Étape 1 : Utiliser une image officielle avec Python
+# Étape 1 : Utiliser une image officielle avec Ubuntu 22.04
 FROM ubuntu:22.04
 
 # Installer Python et les dépendances nécessaires
@@ -7,18 +7,17 @@ RUN apt-get update && \
     apt-get clean
 
 # Étape 2 : Définir le dossier de travail dans le conteneur
-# Créer le répertoire s'il n'existe pas déjà
-WORKDIR ${HOME}/titanic
+WORKDIR /titanic
 
 # Étape 3 : Copier les fichiers nécessaires dans l'image Docker
 COPY requirements_clean.txt ./
 COPY titanicml/ ./titanicml/
-COPY pyproject.toml ./
-COPY main.py ./
 COPY configuration/ ./configuration/
+COPY docs/main.py ./  
 
 # Étape 4 : Installer les dépendances
 RUN pip install --no-cache-dir -r requirements_clean.txt
 
 # Étape 5 : Définir la commande à exécuter
-CMD ["python3", "main.py"]
+ENTRYPOINT ["python3", "main.py"]
+CMD []
