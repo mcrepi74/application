@@ -28,8 +28,8 @@ jobs:
       - name: Lint
         run: |
           source venv/bin/activate
-          venv/bin/pylint src --fail-under=6
+          venv/bin/pylint titanicml --fail-under=6
       - name: Test Python code
         run: |
           source venv/bin/activate
-          venv/bin/python main.py
+          venv/bin/python docs/main.py
