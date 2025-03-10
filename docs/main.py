@@ -11,8 +11,8 @@ from loguru import logger
 # Ajouter le répertoire parent au sys.path pour trouver le module titanicml
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from titanicml.data.import_data import load_data, explore_data
-from titanicml.models.train_evaluate import train_model, evaluate_model
+# Importer les fonctions depuis le package titanicml
+from titanicml import load_data, explore_data, train_model, evaluate_model
 
 # Ajouter un fichier de log avec rotation automatique
 logger.add("logs/app.log", rotation="10 MB", level="INFO")
