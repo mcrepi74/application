@@ -1,3 +1,9 @@
+"""
+Module titanicml.
+
+Ce module contient les fonctions et classes pour le projet Titanic ML.
+"""
+
 from .data.import_data import (
     load_data,
     explore_data
@@ -13,7 +19,6 @@ __all__ = [
     "load_data",
     "explore_data",
     "preprocess_data",
-    "create_pipeline",
     "train_model",
     "evaluate_model"
 ]
