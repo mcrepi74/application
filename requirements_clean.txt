@@ -27,7 +27,8 @@ zstandard==0.23.0
 
 # Ajout des bibliothèques pertinentes
 seaborn==0.12.2
-pandas==2.1.1
+pandas==1.5.3
+Cython==0.29.33
 numpy==1.25.2
 scipy==1.11.2
 scikit-learn==1.3.1
