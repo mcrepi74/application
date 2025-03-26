@@ -13,11 +13,11 @@ WORKDIR /titanic
 COPY requirements_clean.txt ./
 COPY titanicml/ ./titanicml/
 COPY configuration/ ./configuration/
-COPY docs/main.py ./  
+COPY docs/train.py ./  
 
 # Étape 4 : Installer les dépendances
 RUN pip install --no-cache-dir -r requirements_clean.txt
 
 # Étape 5 : Définir la commande à exécuter
-ENTRYPOINT ["python3", "main.py"]
+ENTRYPOINT ["python3", "train.py"]
 CMD []
