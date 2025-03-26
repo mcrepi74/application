@@ -3,10 +3,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from dotenv import load_dotenv
 from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
 import os
 import sys
 import yaml
 from loguru import logger
+
 
 # Ajouter le répertoire parent au sys.path pour trouver le module titanicml
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -69,6 +71,8 @@ def main():
 
     model = train_model(X_train, y_train, args.n_trees)
     evaluate_model(model, X_test, y_test)
+
+
 
 if __name__ == "__main__":
     main()

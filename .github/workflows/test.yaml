@@ -32,4 +32,4 @@ jobs:
       - name: Test Python code
         run: |
           source venv/bin/activate
-          venv/bin/python docs/main.py
+          venv/bin/python docs/train.py
