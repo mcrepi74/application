@@ -19,6 +19,7 @@ COPY docs/train.py ./
 
 # Étape 4 : Installer les dépendances
 RUN pip install --no-cache-dir -r requirements_clean.txt
+RUN chmod +x ./app/run.sh
 
 # Étape 5 : Définir la commande à exécuter
 CMD ["bash", "-c", "./app/run.sh"]
