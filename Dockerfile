@@ -21,5 +21,4 @@ COPY docs/train.py ./
 RUN pip install --no-cache-dir -r requirements_clean.txt
 
 # Étape 5 : Définir la commande à exécuter
-ENTRYPOINT ["python3", "train.py"]
 CMD ["bash", "-c", "./app/run.sh"]
