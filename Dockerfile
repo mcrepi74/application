@@ -10,14 +10,16 @@ RUN apt-get update && \
 WORKDIR /titanic
 
 # Étape 3 : Copier les fichiers nécessaires dans l'image Docker
+COPY app ./app
 COPY requirements_clean.txt ./
 COPY titanicml/ ./titanicml/
 COPY configuration/ ./configuration/
-COPY docs/train.py ./  
+COPY docs/train.py ./ 
+
 
 # Étape 4 : Installer les dépendances
 RUN pip install --no-cache-dir -r requirements_clean.txt
 
 # Étape 5 : Définir la commande à exécuter
 ENTRYPOINT ["python3", "train.py"]
-CMD []
+CMD ["bash", "-c", "./app/run.sh"]
