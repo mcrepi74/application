@@ -34,8 +34,7 @@ async def predict(
     fare: float = 16.5,
     embarked: str = "S"
 ) -> str:
-    """
-    """
+    """Return the survival prediction based on provided passenger features."""
 
     df = pd.DataFrame(
         {
